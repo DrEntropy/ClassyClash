@@ -6,14 +6,11 @@ class Character {
 
     public:
         // todo, add error checking if file doesnt exist.
-        Character(const char* idlesprite,const char* runsprite,float windowX,float windowY):
+        Character(const char* idlesprite,const char* runsprite):
           idle(LoadTexture(idlesprite)),run(LoadTexture(runsprite)) {
               // start in idle.
               texture = idle;
-              screenPos = {
-                windowX - 4.0f*(0.5f*(float)texture.width/6.0f),
-                windowY - 4.0f* (0.5f*(float)texture.height) };
-           }
+        }
 
         ~Character(){
           UnloadTexture(idle);
@@ -23,6 +20,8 @@ class Character {
 
 
         Vector2 getWorldPos() {return worldPos;}
+
+        void setScreenPos(int windowWidth,int widowHeight);
 
         // update knight 
 
@@ -35,7 +34,7 @@ class Character {
         Texture2D idle;
         Texture2D run;
         // position
-        Vector2 screenPos;
+        Vector2 screenPos{};
         Vector2 worldPos{0.f,0.f}; 
 
         float speed{4.0f};
@@ -51,6 +50,13 @@ class Character {
 
 
 };
+
+void Character::setScreenPos(int windowWidth,int windowHeight){
+            screenPos = {
+                (float)windowWidth/2.f - 4.0f*(0.5f*(float)texture.width/6.0f),
+                (float)windowHeight/2.f - 4.0f* (0.5f*(float)texture.height) };
+
+}
 
 void Character::tick(float deltaTime) {
 
@@ -120,9 +126,9 @@ int main()
     // Vector2 mapPos{0.0, 0.0};
     // float speed{4.0};
 
-    Character knight("characters/knight_idle_spritesheet.png","characters/knight_run_spritesheet.png",
-        (float)windowWidth/2.0f,(float)windowHeight/2.0f);
-
+    Character knight("characters/knight_idle_spritesheet.png",
+                    "characters/knight_run_spritesheet.png");
+    knight.setScreenPos(windowWidth,windowHeight);
 
     SetTargetFPS(60);
     while (!WindowShouldClose())
