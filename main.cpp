@@ -138,9 +138,8 @@ int main()
 
         knight.tick(GetFrameTime());
 
-        //temporary... need consider how we want worldPos to actaully
-        // work
-        Vector2 mapPos = Vector2Subtract({0.0f,0.0f},knight.getWorldPos());
+        // flip world pos
+        Vector2 mapPos = Vector2Scale(knight.getWorldPos(),-1.f);
 
         // draw the map
         DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
