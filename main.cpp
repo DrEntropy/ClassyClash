@@ -71,8 +71,8 @@ void Character::tick(float deltaTime) {
     
     if(Vector2Length(direction)!=0.0)
         {
-            // set mapPos = mapPos - direction
-            worldPos = Vector2Subtract(worldPos,
+            // set worldPos = mapPos + direction
+            worldPos = Vector2Add(worldPos,
                         Vector2Scale(Vector2Normalize(direction),speed));
                         
             rightLeft = (direction.x < 0.f ? -1.f : 1.f);
@@ -138,8 +138,12 @@ int main()
 
         knight.tick(GetFrameTime());
 
+        //temporary... need consider how we want worldPos to actaully
+        // work
+        Vector2 mapPos = Vector2Subtract({0.0f,0.0f},knight.getWorldPos());
+
         // draw the map
-        DrawTextureEx(map, knight.getWorldPos(), 0.0, 4.0, WHITE);
+        DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
        
 
         knight.draw();
