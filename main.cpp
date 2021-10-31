@@ -23,7 +23,7 @@ int main()
 
     Character knight("characters/knight_idle_spritesheet.png",
                     "characters/knight_run_spritesheet.png");
-    knight.setScreenPos(windowWidth,windowHeight);
+    knight.setScreenPos(windowWidth,windowHeight,mapScale);
 
     SetTargetFPS(60);
     while (!WindowShouldClose())
@@ -54,7 +54,7 @@ int main()
         DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
        
 
-        knight.draw();
+        knight.draw(mapScale);
 
 
         EndDrawing();

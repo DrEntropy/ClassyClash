@@ -24,12 +24,12 @@ class Character {
 
         Vector2 getWorldPos() {return worldPos;}
 
-        void setScreenPos(int windowWidth,int widowHeight);
+        void setScreenPos(int windowWidth,int widowHeight,float scale);
 
         // update knight 
 
         void tick(float deltaTime);
-        void draw();
+        void draw(float scale);
         void undoMove();
 
 

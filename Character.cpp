@@ -4,14 +4,14 @@
 #include "Character.h"
 #include "raymath.h"
 
-// tp do, need to get rid of 4.0 scale here.
+ 
 
 
 
-void Character::setScreenPos(int windowWidth,int windowHeight){
+void Character::setScreenPos(int windowWidth,int windowHeight,float scale){
             screenPos = {
-                (float)windowWidth/2.f - 4.0f*(0.5f*width),
-                (float)windowHeight/2.f - 4.0f* (0.5f*height) };
+                (float)windowWidth/2.f - scale*(0.5f*width),
+                (float)windowHeight/2.f - scale* (0.5f*height) };
 
 }
 
@@ -56,7 +56,7 @@ void Character::tick(float deltaTime) {
 
 }
 
-void Character::draw(){
+void Character::draw(float scale){
                 // draw the character
 
        
@@ -66,8 +66,8 @@ void Character::draw(){
             } ;
 
         Rectangle dest{ screenPos.x, dest.y = screenPos.y,
-            4.0f*width,
-            4.0f*height
+            scale*width,
+            scale*height
             };
 
         DrawTexturePro(texture,source,dest,{0,0},0.0f,WHITE);
