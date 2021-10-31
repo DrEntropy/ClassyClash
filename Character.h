@@ -12,11 +12,11 @@ class Character {
           idle(LoadTexture(idlesprite)),run(LoadTexture(runsprite)) {
               // start in idle.
               texture = idle;
-              width = (float)texture.width/maxFrames;
-              height = (float)texture.height;
+              width = static_cast<float>(texture.width/maxFrames);
+              height = static_cast<float>(texture.height);
               screenPos = {
-                (float)windowWidth/2.f - scale*(0.5f*width),
-                (float)windowHeight/2.f - scale* (0.5f*height) };
+                static_cast<float>(windowWidth)/2.f - scale*(0.5f*width),
+                static_cast<float>(windowHeight)/2.f - scale* (0.5f*height) };
         }
 
         ~Character(){
