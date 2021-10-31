@@ -1,5 +1,8 @@
 #pragma once
 
+#include "raylib.h"
+
+
 class Character {
 
     public:
