@@ -49,8 +49,8 @@ class Character {
         float rightLeft{1.0f};  // -1 left, 1 right. used to flip scale
         float runningTime{};
         int frame{};
-        const int maxFrames{6};
-        const float updateTime{1.f/12.f};
+        int maxFrames{6};
+        float updateTime{1.f/12.f};
 
 
 };
