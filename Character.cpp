@@ -4,6 +4,9 @@
 #include "Character.h"
 #include "raymath.h"
 
+// tp do, need to get rid of 4.0 scale here.
+
+
 
 void Character::setScreenPos(int windowWidth,int windowHeight){
             screenPos = {
@@ -12,9 +15,16 @@ void Character::setScreenPos(int windowWidth,int windowHeight){
 
 }
 
+
+void Character::undoMove(){ 
+     worldPos = worldPosLastFrame;
+}
+
 void Character::tick(float deltaTime) {
 
-    // update worldpos
+    // update worldpos, save previous
+    worldPosLastFrame = worldPos;
+   
 
     Vector2 direction{};
 

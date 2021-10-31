@@ -19,6 +19,8 @@ int main()
     // Vector2 mapPos{0.0, 0.0};
     // float speed{4.0};
 
+    const float mapScale{4.0f};
+
     Character knight("characters/knight_idle_spritesheet.png",
                     "characters/knight_run_spritesheet.png");
     knight.setScreenPos(windowWidth,windowHeight);
@@ -31,11 +33,25 @@ int main()
 
         knight.tick(GetFrameTime());
 
+        // get position in world
+        Vector2 worldPos = knight.getWorldPos();
+        // verffy still on map
+        if (worldPos.x < 0.f ||
+            worldPos.y < 0.f ||
+            worldPos.x + windowWidth > mapScale*map.width ||
+            worldPos.y + windowHeight > mapScale*map.height) 
+        {
+                knight.undoMove();
+                worldPos = knight.getWorldPos();
+        }
+
+
+
         // flip world pos
-        Vector2 mapPos = Vector2Scale(knight.getWorldPos(),-1.f);
+        Vector2 mapPos = Vector2Scale(worldPos,-1.f);
 
         // draw the map
-        DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
+        DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
        
 
         knight.draw();

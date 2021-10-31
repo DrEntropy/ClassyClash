@@ -30,6 +30,7 @@ class Character {
 
         void tick(float deltaTime);
         void draw();
+        void undoMove();
 
 
     private:
@@ -41,6 +42,10 @@ class Character {
         Vector2 worldPos{0.f,0.f}; 
 
         float speed{4.0f};
+
+
+        // 
+        Vector2 worldPosLastFrame{};
 
 
         // animation variables
