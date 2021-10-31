@@ -8,12 +8,6 @@
 
 
 
-void Character::setScreenPos(int windowWidth,int windowHeight,float scale){
-            screenPos = {
-                (float)windowWidth/2.f - scale*(0.5f*width),
-                (float)windowHeight/2.f - scale* (0.5f*height) };
-
-}
 
 
 void Character::undoMove(){ 

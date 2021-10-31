@@ -21,9 +21,10 @@ int main()
 
     const float mapScale{4.0f};
 
-    Character knight("characters/knight_idle_spritesheet.png",
-                    "characters/knight_run_spritesheet.png");
-    knight.setScreenPos(windowWidth,windowHeight,mapScale);
+    Character knight{"characters/knight_idle_spritesheet.png",
+                    "characters/knight_run_spritesheet.png",
+                    windowWidth,windowHeight,mapScale};
+    
 
     SetTargetFPS(60);
     while (!WindowShouldClose())

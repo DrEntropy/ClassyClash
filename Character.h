@@ -7,12 +7,16 @@ class Character {
 
     public:
         // todo, add error checking if file doesnt exist.
-        Character(const char* idlesprite,const char* runsprite):
+        Character(const char* idlesprite,const char* runsprite,
+                  int windowWidth,int windowHeight,float scale):
           idle(LoadTexture(idlesprite)),run(LoadTexture(runsprite)) {
               // start in idle.
               texture = idle;
               width = (float)texture.width/maxFrames;
               height = (float)texture.height;
+              screenPos = {
+                (float)windowWidth/2.f - scale*(0.5f*width),
+                (float)windowHeight/2.f - scale* (0.5f*height) };
         }
 
         ~Character(){
@@ -23,8 +27,6 @@ class Character {
 
 
         Vector2 getWorldPos() {return worldPos;}
-
-        void setScreenPos(int windowWidth,int widowHeight,float scale);
 
         // update knight 
 
