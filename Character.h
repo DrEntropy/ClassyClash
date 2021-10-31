@@ -11,7 +11,8 @@ class Character {
           idle(LoadTexture(idlesprite)),run(LoadTexture(runsprite)) {
               // start in idle.
               texture = idle;
-               knightWidth = (float)texture.width/maxFrames;
+              width = (float)texture.width/maxFrames;
+              height = (float)texture.height;
         }
 
         ~Character(){
@@ -43,7 +44,8 @@ class Character {
 
 
         // animation variables
-        float knightWidth;
+        float width;
+        float height;
         float rightLeft{1.0f};  // -1 left, 1 right. used to flip scale
         float runningTime{};
         int frame{};
