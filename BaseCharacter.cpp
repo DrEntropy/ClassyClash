@@ -14,7 +14,7 @@ void BaseCharacter::udpateScreenPos(Vector2 knightPos){
 
 Rectangle BaseCharacter::getCollisionRect( )  {
          return Rectangle{screenPos.x,screenPos.y,
-             texture.width*scale,texture.height*scale};  
+             width*scale,height*scale};  
 
 }
 
