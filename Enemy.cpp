@@ -11,32 +11,37 @@ void Enemy::tick(float deltaTime) {
     // update worldpos, save previous
     worldPosLastFrame = worldPos;
    
-
+     
     Vector2 direction{};
     
 
-    // enemy AI TBD
-    // switch(GetRandomValue(1,5)) {
-    //     case 1: direction.x -= 1.0;break;   
-    //     case 2: direction.x += 1.0;break;
-    //     case 3: direction.y -= 1.0;break;
-    //     case 4: direction.y += 1.0;break;
-    //     default: ;
+    // Enemy AI 
+    // Compute toTarget
+    Vector2 toTarget= Vector2Subtract(target->getScreenPos(),screenPos);
+    // normalize toTarget
+    toTarget = Vector2Normalize(toTarget);
+    // multiply by speed
+    toTarget = Vector2Scale(toTarget,speed);
+    //move enemy
 
-
-    // }
+    worldPos = Vector2Add(toTarget,worldPos);
     
-    if(Vector2Length(direction)!=0.0)
-        {
-            // set worldPos = mapPos + direction
-            worldPos = Vector2Add(worldPos,
-                        Vector2Scale(Vector2Normalize(direction),speed));
+    // for now
+    texture = run;
+
+    rightLeft = (toTarget.x < 0.f ? -1.f : 1.f);
+
+    // if(Vector2Length(direction)!=0.0)
+    //     {
+    //         // set worldPos = mapPos + direction
+    //         worldPos = Vector2Add(worldPos,
+    //                     Vector2Scale(Vector2Normalize(direction),speed));
                         
-            rightLeft = (direction.x < 0.f ? -1.f : 1.f);
-            texture=run;
-        } else {
-            texture=idle;
-        }
+    //         rightLeft = (direction.x < 0.f ? -1.f : 1.f);
+    //         texture=run;
+    //     } else {
+    //         texture=idle;
+    //     }
    // update screen position, recalling that the taget is at the center.
    screenPos = Vector2Subtract(worldPos,target->getWorldPos());
    // rest of update

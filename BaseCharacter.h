@@ -25,7 +25,8 @@ class BaseCharacter
         // void udpateScreenPos(Vector2 knightPos);
 
         // returns the world pos of teh character
-        Vector2 getWorldPos() {return worldPos;}
+        inline Vector2 getWorldPos() {return worldPos;}
+        inline Vector2 getScreenPos() {return screenPos;}
 
         // update character. These are virtual 
 
@@ -47,7 +48,7 @@ class BaseCharacter
         // position on screen
         Vector2 screenPos{};
        
-
+      // speed is  a magic number
         float speed{4.0f};
         float scale{};
 
