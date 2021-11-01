@@ -23,10 +23,10 @@ class Character : public BaseCharacter{
         // update knight 
 
         void tick(float deltaTime) override;
-        void Render(Vector2) override;
+        void Render() override;
         
 
-        Rectangle getCollisionRect(Vector2 ) override;
+   
 
 
   

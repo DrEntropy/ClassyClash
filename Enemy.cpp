@@ -10,6 +10,8 @@ void Enemy::tick(float deltaTime) {
 
     Vector2 direction{};
     
+
+    // enemy AI TBD
     // switch(GetRandomValue(1,5)) {
     //     case 1: direction.x -= 1.0;break;   
     //     case 2: direction.x += 1.0;break;
@@ -43,10 +45,9 @@ void Enemy::tick(float deltaTime) {
 
 }
 
-void Enemy::Render(Vector2 knightPos){
+void Enemy::Render(){
                 // draw the character
-        Vector2 screenPos = Vector2Subtract(worldPos,knightPos);
-
+         
         
        
         Rectangle source { frame*width,0.0f, 
@@ -63,13 +64,7 @@ void Enemy::Render(Vector2 knightPos){
 
 }
 
-Rectangle Enemy::getCollisionRect(Vector2 knightPos )  {
-         Vector2 screenPos = Vector2Subtract(worldPos,knightPos);
-         return Rectangle{screenPos.x,screenPos.y,
-             texture.width*scale,texture.height*scale};  
-
-}
-
+ 
 
 
 

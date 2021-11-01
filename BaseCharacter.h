@@ -5,7 +5,7 @@
 class BaseCharacter
 {
   public:
-         
+         // constructs a character with starting worldPos os and the given textures. 
         BaseCharacter(Vector2 pos,Texture2D idlesprite,Texture2D runsprite,float scale):worldPos{pos},
           idle(idlesprite),run(runsprite),scale(scale) {
               // start in idle.
@@ -20,17 +20,20 @@ class BaseCharacter
           UnloadTexture(run);
 
         }
+        
+        // this is abit of a hack.
+        void udpateScreenPos(Vector2 knightPos);
 
-
+        // returns the world pos of teh character
         Vector2 getWorldPos() {return worldPos;}
 
-        // update knight 
+        // update character. These are virtual 
 
         virtual void tick(float deltaTime) =0 ;
-        virtual void Render(Vector2 knightPos)=0;
+        virtual void Render()=0;
         void undoMove();
 
-        virtual Rectangle getCollisionRect(Vector2 knightPos )=0;
+        Rectangle getCollisionRect( );
 
 
     protected:
@@ -38,7 +41,8 @@ class BaseCharacter
         Texture2D texture;
         Texture2D idle;
         Texture2D run;
-        // position
+
+        // position on screen
         Vector2 screenPos{};
        
 

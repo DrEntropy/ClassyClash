@@ -18,8 +18,8 @@ public:
  
 
         void tick(float deltaTime) override;
-        void Render(Vector2 knightPos) override;
-        Rectangle getCollisionRect(Vector2 knightPos ) override;
+        void Render( ) override;
+       
     
 
 };

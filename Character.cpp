@@ -48,7 +48,7 @@ void Character::tick(float deltaTime) {
 
 }
 
-void Character::Render(Vector2 unused){
+void Character::Render(){
                 // draw the character
 
        
@@ -67,7 +67,3 @@ void Character::Render(Vector2 unused){
 }
 
 
-Rectangle Character::getCollisionRect(Vector2 unused ) {
-    return Rectangle { screenPos.x,screenPos.y,width*scale,height*scale};
-
-}

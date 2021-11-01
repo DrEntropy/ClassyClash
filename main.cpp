@@ -47,6 +47,7 @@ int main()
 
         knight.tick(GetFrameTime());
         goblin.tick(GetFrameTime());
+         
 
         // get position in world, 
          Vector2 worldPos = knight.getWorldPos();
@@ -62,21 +63,26 @@ int main()
         
         // check for collision
         for (auto prop:props) {
-           bool coll = CheckCollisionRecs(knight.getCollisionRect({0.0f,0.0f}),prop.getCollisionRect(knight.getWorldPos()));
+           bool coll = CheckCollisionRecs(knight.getCollisionRect(),prop.getCollisionRect(knight.getWorldPos()));
            if(coll) knight.undoMove();
         }
          
           // update world pos
         worldPos = knight.getWorldPos();
 
+        // tell goblin where the screen is now.
+        goblin.udpateScreenPos(worldPos);
+
+        // We need to check for collision with goblin.
+        
       
         Vector2 mapPos = Vector2Scale(worldPos,-1.f);
 
         // draw the map
         DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
 
-        knight.Render({0.f,0.f});
-        goblin.Render(worldPos);
+        knight.Render();
+        goblin.Render();
   
         /// DRAW props
         for(auto prop : props){
