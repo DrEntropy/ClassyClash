@@ -29,8 +29,10 @@ class BaseCharacter
 
         // update character. These are virtual 
 
-        virtual void tick(float deltaTime) =0 ;
-        virtual void Render()=0;
+        virtual void tick(float deltaTime) ;
+
+        // draw teh character
+        void Render();
         void undoMove();
 
         Rectangle getCollisionRect( );

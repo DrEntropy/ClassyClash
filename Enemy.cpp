@@ -34,33 +34,8 @@ void Enemy::tick(float deltaTime) {
             texture=idle;
         }
 
-    // update animation frame
-    runningTime += deltaTime;
-    if(runningTime>updateTime){
-        runningTime=0;
-        frame++;
-        if(frame >= maxFrames) frame =0;
-    }
-    
-
-}
-
-void Enemy::Render(){
-                // draw the character
-         
-        
-       
-        Rectangle source { frame*width,0.0f, 
-            rightLeft * width,
-            height
-            } ;
-
-        Rectangle dest{ screenPos.x,   screenPos.y,
-            scale*width,
-            scale*height
-            };
-
-        DrawTexturePro(texture,source,dest,{0,0},0.0f,WHITE);
+   // rest of update
+   BaseCharacter::tick(deltaTime);
 
 }
 
