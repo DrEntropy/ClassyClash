@@ -19,6 +19,7 @@ public:
  
         void setTarget(Character*);
         virtual void tick(float deltaTime) override;
+        virtual Vector2 getScreenPos() override;
 
 private: 
      Character* target;       

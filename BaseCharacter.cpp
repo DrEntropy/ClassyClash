@@ -11,9 +11,10 @@
 // void BaseCharacter::udpateScreenPos(Vector2 knightPos){
 //       screenPos = Vector2Subtract(worldPos,knightPos);
 // }  
+ 
 
 Rectangle BaseCharacter::getCollisionRect( )  {
-         return Rectangle{screenPos.x,screenPos.y,
+         return Rectangle{getScreenPos().x,getScreenPos().y,
              width*scale,height*scale};  
 
 }
@@ -51,7 +52,8 @@ void BaseCharacter::Render(){
             rightLeft * width,
             height
             } ;
-
+    
+        Vector2 screenPos = getScreenPos();
         Rectangle dest{ screenPos.x, dest.y = screenPos.y,
             scale*width,
             scale*height

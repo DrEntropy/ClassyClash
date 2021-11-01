@@ -26,7 +26,9 @@ class BaseCharacter
 
         // returns the world pos of teh character
         inline Vector2 getWorldPos() {return worldPos;}
-        inline Vector2 getScreenPos() {return screenPos;}
+
+        // subclasses have to define this.
+        virtual Vector2 getScreenPos()=0;
 
         // update character. These are virtual 
 
@@ -44,10 +46,7 @@ class BaseCharacter
         Texture2D texture;
         Texture2D idle;
         Texture2D run;
-
-        // position on screen
-        Vector2 screenPos{};
-       
+ 
       // speed is  a magic number
         float speed{4.0f};
         float scale{};

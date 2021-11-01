@@ -13,7 +13,7 @@ void Enemy::tick(float deltaTime) {
    
     // Enemy AI 
     // Compute (un normalized direction) to target.
-    velocity= Vector2Subtract(target->getScreenPos(),screenPos);
+    velocity= Vector2Subtract(target->getScreenPos(),getScreenPos());
   
  
 
@@ -21,11 +21,14 @@ void Enemy::tick(float deltaTime) {
    // rest of update
    BaseCharacter::tick(deltaTime);
     
-    // update screen pos
-   screenPos = Vector2Subtract(worldPos,target->getWorldPos());
+
 }
 
- 
+
+// compute screen position using known fact that target is in center.
+
+Vector2 Enemy::getScreenPos() {
+    return Vector2Subtract(worldPos,target->getWorldPos());}
 
 
 

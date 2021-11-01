@@ -17,7 +17,7 @@ class Character : public BaseCharacter{
                 static_cast<float>(windowHeight)/2.f - scale* (0.5f*height) };
         }
 
-      
+        virtual Vector2 getScreenPos() override;
 
  
         // update knight 
@@ -25,7 +25,9 @@ class Character : public BaseCharacter{
         virtual void tick(float deltaTime) override;
           
         
-
+   private: 
+      // screen pos cache
+       Vector2 screenPos;
    
 
 

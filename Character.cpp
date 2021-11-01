@@ -8,7 +8,9 @@
 
 
 
-
+Vector2 Character::getScreenPos() {
+    return screenPos;
+}
 
  
 
