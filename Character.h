@@ -6,10 +6,10 @@
 class Character {
 
     public:
-        // todo, add error checking if file doesnt exist.
-        Character(const char* idlesprite,const char* runsprite,
+         
+        Character(Texture2D idlesprite,Texture2D runsprite,
                   int windowWidth,int windowHeight,float scale):
-          idle(LoadTexture(idlesprite)),run(LoadTexture(runsprite)),scale(scale) {
+          idle(idlesprite),run(runsprite),scale(scale) {
               // start in idle.
               texture = idle;
               width = static_cast<float>(texture.width/maxFrames);
@@ -31,7 +31,7 @@ class Character {
         // update knight 
 
         void tick(float deltaTime);
-        void draw();
+        void Render();
         void undoMove();
 
 

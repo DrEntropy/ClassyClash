@@ -22,8 +22,8 @@ int main()
 
     const float mapScale{4.0f};
 
-    Character knight{"characters/knight_idle_spritesheet.png",
-                    "characters/knight_run_spritesheet.png",
+    Character knight{LoadTexture("characters/knight_idle_spritesheet.png"),
+                    LoadTexture("characters/knight_run_spritesheet.png"),
                     windowWidth,windowHeight,mapScale};
     
     Prop rock({0.f,0.f},LoadTexture("nature_tileset/Rock.png"),4.f);
@@ -55,7 +55,7 @@ int main()
         // draw the map
         DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
 
-        knight.draw();
+        knight.Render();
         rock.Render(worldPos);
 
 
