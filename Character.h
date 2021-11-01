@@ -9,7 +9,7 @@ class Character {
         // todo, add error checking if file doesnt exist.
         Character(const char* idlesprite,const char* runsprite,
                   int windowWidth,int windowHeight,float scale):
-          idle(LoadTexture(idlesprite)),run(LoadTexture(runsprite)) {
+          idle(LoadTexture(idlesprite)),run(LoadTexture(runsprite)),scale(scale) {
               // start in idle.
               texture = idle;
               width = static_cast<float>(texture.width/maxFrames);
@@ -31,7 +31,7 @@ class Character {
         // update knight 
 
         void tick(float deltaTime);
-        void draw(float scale);
+        void draw();
         void undoMove();
 
 
@@ -44,6 +44,7 @@ class Character {
         Vector2 worldPos{0.f,0.f}; 
 
         float speed{4.0f};
+        float scale{};
 
 
         // 

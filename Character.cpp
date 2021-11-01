@@ -50,7 +50,7 @@ void Character::tick(float deltaTime) {
 
 }
 
-void Character::draw(float scale){
+void Character::draw(){
                 // draw the character
 
        
