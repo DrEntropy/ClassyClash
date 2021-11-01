@@ -53,8 +53,6 @@ int main()
 
         // draw the map
         DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
-       Prop.h
-       
 
         knight.draw();
 
