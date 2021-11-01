@@ -1,6 +1,7 @@
 
 
 #include "Character.h"
+#include "Prop.h"
 #include "raymath.h"
 
 
@@ -25,7 +26,7 @@ int main()
                     "characters/knight_run_spritesheet.png",
                     windowWidth,windowHeight,mapScale};
     
-
+    Prop rock({0.f,0.f},LoadTexture("nature_tileset/Rock.png"),4.f);
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
@@ -55,6 +56,7 @@ int main()
         DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
 
         knight.draw();
+        rock.Render(worldPos);
 
 
         EndDrawing();
