@@ -26,7 +26,18 @@ int main()
                     LoadTexture("characters/knight_run_spritesheet.png"),
                     windowWidth,windowHeight,mapScale};
     
-    Prop rock({0.f,0.f},LoadTexture("nature_tileset/Rock.png"),4.f);
+    // props
+    
+ 
+    Prop props[2] {
+      Prop{Vector2{600.f,300.f},LoadTexture("nature_tileset/Rock.png"),4.f} ,
+      Prop{Vector2{400.f,500.f},LoadTexture("nature_tileset/Log.png"),4.f}
+    };
+
+
+
+
+
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
@@ -35,28 +46,40 @@ int main()
 
         knight.tick(GetFrameTime());
 
-        // get position in world
-        Vector2 worldPos = knight.getWorldPos();
+        // get position in world, 
+         Vector2 worldPos = knight.getWorldPos();
         // verffy still on map
         if (worldPos.x < 0.f ||
-            worldPos.y < 0.f ||
+           worldPos.y < 0.f ||
             worldPos.x + windowWidth > mapScale*map.width ||
             worldPos.y + windowHeight > mapScale*map.height) 
         {
                 knight.undoMove();
-                worldPos = knight.getWorldPos();
+                 
         }
+        
+        // check for collision
+        for (auto prop:props) {
+           bool coll = CheckCollisionRecs(knight.getCollisionRect(),prop.getCollisionRect(knight.getWorldPos()));
+           if(coll) knight.undoMove();
+        }
+         
+          // update world pos
+        worldPos = knight.getWorldPos();
 
-
-
-        // flip world pos
+      
         Vector2 mapPos = Vector2Scale(worldPos,-1.f);
 
         // draw the map
         DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
 
         knight.Render();
-        rock.Render(worldPos);
+  
+        /// DRAW props
+        for(auto prop : props){
+           prop.Render(worldPos);
+        }
+        
 
 
         EndDrawing();

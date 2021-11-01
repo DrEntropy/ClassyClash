@@ -34,6 +34,8 @@ class Character {
         void Render();
         void undoMove();
 
+        Rectangle getCollisionRect( );
+
 
     private:
         Texture2D texture;
