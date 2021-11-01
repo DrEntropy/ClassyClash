@@ -3,7 +3,7 @@
 #include "Character.h"
 #include "Prop.h"
 #include "raymath.h"
-
+#include "Enemy.h"
 
 
 
@@ -34,7 +34,8 @@ int main()
       Prop{Vector2{400.f,500.f},LoadTexture("nature_tileset/Log.png"),4.f}
     };
 
-
+    Enemy goblin(Vector2 {20.f,20.f},LoadTexture("characters/goblin_idle_spritesheet.png"),
+               LoadTexture("characters/goblin_run_spritesheet.png"),4.0f);
 
 
 
@@ -45,6 +46,7 @@ int main()
         ClearBackground(WHITE);
 
         knight.tick(GetFrameTime());
+        goblin.tick(GetFrameTime());
 
         // get position in world, 
          Vector2 worldPos = knight.getWorldPos();
@@ -74,6 +76,7 @@ int main()
         DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
 
         knight.Render();
+        goblin.Render(worldPos);
   
         /// DRAW props
         for(auto prop : props){
