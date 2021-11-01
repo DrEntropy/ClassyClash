@@ -37,7 +37,7 @@ int main()
     Enemy goblin(Vector2 {20.f,20.f},LoadTexture("characters/goblin_idle_spritesheet.png"),
                LoadTexture("characters/goblin_run_spritesheet.png"),4.0f);
 
-
+    goblin.setTarget(&knight);
 
     SetTargetFPS(60);
     while (!WindowShouldClose())
@@ -46,7 +46,7 @@ int main()
         ClearBackground(WHITE);
 
         knight.tick(GetFrameTime());
-        goblin.tick(GetFrameTime());
+     
          
 
         // get position in world, 
@@ -70,11 +70,11 @@ int main()
           // update world pos
         worldPos = knight.getWorldPos();
 
-        // tell goblin where the screen is now.
-        goblin.udpateScreenPos(worldPos);
+       // now we can 'tick' the goblin now that the player has his final position
+       goblin.tick(GetFrameTime());
 
         // We need to check for collision with goblin.
-        
+
       
         Vector2 mapPos = Vector2Scale(worldPos,-1.f);
 

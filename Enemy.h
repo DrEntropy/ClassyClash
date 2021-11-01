@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "BaseCharacter.h"
+#include "Character.h"
 
 class Enemy  : public BaseCharacter { 
 
@@ -16,9 +17,11 @@ public:
         // }
 
  
-
+        void setTarget(Character*);
         virtual void tick(float deltaTime) override;
-         
+
+private: 
+     Character* target;       
        
     
 

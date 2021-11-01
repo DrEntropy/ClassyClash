@@ -8,9 +8,9 @@
      worldPos =worldPosLastFrame;
  }
 
-void BaseCharacter::udpateScreenPos(Vector2 knightPos){
-      screenPos = Vector2Subtract(worldPos,knightPos);
-}  
+// void BaseCharacter::udpateScreenPos(Vector2 knightPos){
+//       screenPos = Vector2Subtract(worldPos,knightPos);
+// }  
 
 Rectangle BaseCharacter::getCollisionRect( )  {
          return Rectangle{screenPos.x,screenPos.y,

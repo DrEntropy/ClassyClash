@@ -2,6 +2,10 @@
 #include "raymath.h"
 
 
+void Enemy::setTarget(Character* atarget){
+    target = atarget;
+}
+
 void Enemy::tick(float deltaTime) {
 
     // update worldpos, save previous
@@ -33,7 +37,8 @@ void Enemy::tick(float deltaTime) {
         } else {
             texture=idle;
         }
-
+   // update screen position, recalling that the taget is at the center.
+   screenPos = Vector2Subtract(worldPos,target->getWorldPos());
    // rest of update
    BaseCharacter::tick(deltaTime);
 

@@ -22,7 +22,7 @@ class BaseCharacter
         }
         
         // this is abit of a hack.
-        void udpateScreenPos(Vector2 knightPos);
+        // void udpateScreenPos(Vector2 knightPos);
 
         // returns the world pos of teh character
         Vector2 getWorldPos() {return worldPos;}
