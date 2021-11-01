@@ -7,7 +7,7 @@ class Enemy  : public BaseCharacter {
 public:
          
        Enemy(Vector2 pos,Texture2D idlesprite,Texture2D runsprite,float scale): BaseCharacter(pos,idlesprite,runsprite,scale) {
-                speed = 0.0f; // slow down the enemy
+                speed = 3.0f; // slow down the enemy
         }
 
         // ~Enemy(){

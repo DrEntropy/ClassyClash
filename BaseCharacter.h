@@ -66,5 +66,7 @@ class BaseCharacter
         int maxFrames{6};
         float updateTime{1.f/12.f};
 
+        Vector2 velocity{};
+
 
 };

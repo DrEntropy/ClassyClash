@@ -19,6 +19,20 @@ Rectangle BaseCharacter::getCollisionRect( )  {
 }
 
 void BaseCharacter::tick(float deltaTime){
+      // move
+      if(Vector2Length(velocity)!=0.0)
+        {
+            // set worldPos = mapPos + direction
+            worldPos = Vector2Add(worldPos,
+                        Vector2Scale(Vector2Normalize(velocity),speed));
+                        
+            rightLeft = (velocity.x < 0.f ? -1.f : 1.f);
+            texture=run;
+        } else {
+            texture=idle;
+        }
+      velocity = {};
+
       // update animation frame
     runningTime += deltaTime;
     if(runningTime>updateTime){
