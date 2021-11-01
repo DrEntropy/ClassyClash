@@ -63,6 +63,13 @@ void Enemy::Render(Vector2 knightPos){
 
 }
 
+Rectangle Enemy::getCollisionRect(Vector2 knightPos )  {
+         Vector2 screenPos = Vector2Subtract(worldPos,knightPos);
+         return Rectangle{screenPos.x,screenPos.y,
+             texture.width*scale,texture.height*scale};  
+
+}
+
 
 
 

@@ -62,7 +62,7 @@ int main()
         
         // check for collision
         for (auto prop:props) {
-           bool coll = CheckCollisionRecs(knight.getCollisionRect(),prop.getCollisionRect(knight.getWorldPos()));
+           bool coll = CheckCollisionRecs(knight.getCollisionRect({0.0f,0.0f}),prop.getCollisionRect(knight.getWorldPos()));
            if(coll) knight.undoMove();
         }
          
@@ -75,7 +75,7 @@ int main()
         // draw the map
         DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
 
-        knight.Render();
+        knight.Render({0.f,0.f});
         goblin.Render(worldPos);
   
         /// DRAW props

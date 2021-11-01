@@ -10,9 +10,7 @@
 
 
 
-void Character::undoMove(){ 
-     worldPos = worldPosLastFrame;
-}
+ 
 
 void Character::tick(float deltaTime) {
 
@@ -50,7 +48,7 @@ void Character::tick(float deltaTime) {
 
 }
 
-void Character::Render(){
+void Character::Render(Vector2 unused){
                 // draw the character
 
        
@@ -69,7 +67,7 @@ void Character::Render(){
 }
 
 
-Rectangle Character::getCollisionRect( ) {
+Rectangle Character::getCollisionRect(Vector2 unused ) {
     return Rectangle { screenPos.x,screenPos.y,width*scale,height*scale};
 
 }

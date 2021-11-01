@@ -30,16 +30,17 @@ class BaseCharacter
         virtual void Render(Vector2 knightPos)=0;
         void undoMove();
 
-        Rectangle getCollisionRect(Vector2 knightPos );
+        virtual Rectangle getCollisionRect(Vector2 knightPos )=0;
 
 
     protected:
+        Vector2 worldPos{0.f,0.f}; 
         Texture2D texture;
         Texture2D idle;
         Texture2D run;
         // position
         Vector2 screenPos{};
-        Vector2 worldPos{0.f,0.f}; 
+       
 
         float speed{4.0f};
         float scale{};
