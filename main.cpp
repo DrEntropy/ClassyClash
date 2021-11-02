@@ -5,6 +5,9 @@
 #include "raymath.h"
 #include "Enemy.h"
 
+#include <string>
+ 
+
 
 
 
@@ -88,6 +91,19 @@ int main()
         /// DRAW props
         for(auto prop : props){
            prop.Render(worldPos);
+        }
+
+        // check if character is alive
+        if(!knight.getAlive()) {
+          DrawText("Game Over!",55,45,40,RED);
+          EndDrawing();
+          continue;
+        } else {
+          //alive
+          std::string knightsHealth=  "Health: ";
+          knightsHealth.append(std::to_string(static_cast<int>(knight.getHealth())));
+
+          DrawText(knightsHealth.c_str(),55,45,40,RED);
         }
 
         EndDrawing();
