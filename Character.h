@@ -26,15 +26,20 @@ class Character : public BaseCharacter{
           
         void drawSword();
 
-        inline Rectangle getWeaponCollRect() {return weaponCollisionRec;}
+        inline Rectangle const getWeaponCollRect() {return weaponCollisionRec;}
+
+        inline float getHealth() const {return health;}
+
+        void takeDamage(float damage);
    private: 
       // screen pos cache
        Vector2 screenPos;
        Texture2D weapon{LoadTexture("characters/weapon_sword.png")};
        Rectangle weaponCollisionRec{};
+       float health {100.f};
    
 
-
+ 
   
 
 

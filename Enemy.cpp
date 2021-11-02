@@ -15,11 +15,16 @@ void Enemy::tick(float deltaTime) {
     // Compute (un normalized direction) to target.
     velocity= Vector2Subtract(target->getScreenPos(),getScreenPos());
   
- 
+   
 
 
    // rest of update
    BaseCharacter::tick(deltaTime);
+
+   // Check to see if we can bite the knight! 
+   if( CheckCollisionRecs(target->getCollisionRect(),getCollisionRect()) ){
+        target->takeDamage(damagePerSec*deltaTime);
+   }
     
 
 }
