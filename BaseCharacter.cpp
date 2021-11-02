@@ -56,7 +56,7 @@ void BaseCharacter::Render()
                          height};
 
         Vector2 screenPos = getScreenPos();
-        Rectangle dest{screenPos.x, dest.y = screenPos.y,
+        Rectangle dest{screenPos.x, screenPos.y,
                        scale * width,
                        scale * height};
 

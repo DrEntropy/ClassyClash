@@ -6,6 +6,7 @@
 #include "Enemy.h"
 
 #include <string>
+#include <vector>
  
 
 
@@ -36,11 +37,23 @@ int main()
       Prop{Vector2{600.f,300.f},LoadTexture("nature_tileset/Rock.png"),4.f} ,
       Prop{Vector2{400.f,500.f},LoadTexture("nature_tileset/Log.png"),4.f}
     };
+     // enemies
+    Enemy goblin{ Vector2 {800.f,300.f},LoadTexture("characters/goblin_idle_spritesheet.png"),
+               LoadTexture("characters/goblin_run_spritesheet.png"),4.0f};
 
-    Enemy goblin(Vector2 {20.f,20.f},LoadTexture("characters/goblin_idle_spritesheet.png"),
-               LoadTexture("characters/goblin_run_spritesheet.png"),4.0f);
+    Enemy slime{ Vector2 {220.f,70.f},LoadTexture("characters/slime_idle_spritesheet.png"),
+               LoadTexture("characters/slime_run_spritesheet.png"),4.0f };
 
-    goblin.setTarget(&knight);
+
+
+    std::vector<Enemy> enemies;
+    enemies.push_back(slime);
+    enemies.push_back(goblin);
+    
+  
+    for(Enemy& enemie : enemies)
+        {enemie.setTarget(&knight); } 
+        
 
     SetTargetFPS(60);
     while (!WindowShouldClose())
@@ -72,12 +85,6 @@ int main()
          
           // update world pos
         worldPos = knight.getWorldPos();
-
-       // now we can 'tick' the goblin now that the player has his final position
-       goblin.tick(GetFrameTime());
-
-        
-
       
         Vector2 mapPos = Vector2Scale(worldPos,-1.f);
 
@@ -86,7 +93,14 @@ int main()
 
         knight.Render();
         knight.drawSword();
-        goblin.Render();
+
+        // now we can 'tick' the enemies now that the player has his final position
+       for(Enemy& enemie : enemies) {
+         enemie.tick(GetFrameTime());
+         enemie.Render();
+       }
+         
+      
   
         /// DRAW props
         for(auto prop : props){
@@ -109,13 +123,12 @@ int main()
         EndDrawing();
 
         // check for attack.  Not sure how IsMouseButtonPressed works, i presume it resets a flag after you call it.
-        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && 
-               CheckCollisionRecs(knight.getWeaponCollRect(),goblin.getCollisionRect())) {
-           // we got him! 
-           goblin.setAlive(false);
-
-
-        }
+        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON) ) {
+              for(Enemy& enemie:enemies) {
+                if(CheckCollisionRecs(knight.getWeaponCollRect(),enemie.getCollisionRect()))
+                       enemie.setAlive(false);
+             }
+        } 
     }
     CloseWindow();
 }

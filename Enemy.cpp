@@ -7,14 +7,14 @@ void Enemy::setTarget(Character* atarget){
 }
 
 void Enemy::tick(float deltaTime) {
-    
+    if(!getAlive()) return;
     // update worldpos, save previous
     worldPosLastFrame = worldPos;
    
     // Enemy AI 
     // Compute (un normalized direction) to target.
     velocity= Vector2Subtract(target->getScreenPos(),getScreenPos());
-  
+    if(Vector2Length(velocity) < radius) velocity={};
    
 
 
