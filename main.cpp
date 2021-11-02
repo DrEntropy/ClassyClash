@@ -46,13 +46,12 @@ int main()
 
 
 
-    std::vector<Enemy> enemies;
-    enemies.push_back(slime);
-    enemies.push_back(goblin);
+    Enemy* enemies[] = {&goblin, &slime}; // c style array,  vector didnt work here. Also seems heavy handed.
+    
     
   
-    for(Enemy& enemie : enemies)
-        {enemie.setTarget(&knight); } 
+    for(Enemy* enemie : enemies)
+        {enemie->setTarget(&knight); } 
         
 
     SetTargetFPS(60);
@@ -95,9 +94,9 @@ int main()
         knight.drawSword();
 
         // now we can 'tick' the enemies now that the player has his final position
-       for(Enemy& enemie : enemies) {
-         enemie.tick(GetFrameTime());
-         enemie.Render();
+       for(Enemy* enemie : enemies) {
+         enemie->tick(GetFrameTime());
+         enemie-> Render();
        }
          
       
@@ -124,9 +123,9 @@ int main()
 
         // check for attack.  Not sure how IsMouseButtonPressed works, i presume it resets a flag after you call it.
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON) ) {
-              for(Enemy& enemie:enemies) {
-                if(CheckCollisionRecs(knight.getWeaponCollRect(),enemie.getCollisionRect()))
-                       enemie.setAlive(false);
+              for(Enemy* enemie : enemies) {
+                if(CheckCollisionRecs(knight.getWeaponCollRect(),enemie->getCollisionRect()))
+                       enemie->setAlive(false);
              }
         } 
     }
