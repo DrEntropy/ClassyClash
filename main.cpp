@@ -82,6 +82,7 @@ int main()
         DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
 
         knight.Render();
+        knight.drawSword();
         goblin.Render();
   
         /// DRAW props

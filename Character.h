@@ -24,10 +24,12 @@ class Character : public BaseCharacter{
 
         virtual void tick(float deltaTime) override;
           
-        
+        void drawSword();
    private: 
       // screen pos cache
        Vector2 screenPos;
+       Texture2D weapon{LoadTexture("characters/weapon_sword.png")};
+       Rectangle weaponCollisionRec{};
    
 
 
