@@ -25,6 +25,8 @@ class Character : public BaseCharacter{
         virtual void tick(float deltaTime) override;
           
         void drawSword();
+
+        inline Rectangle getWeaponCollRect() {return weaponCollisionRec;}
    private: 
       // screen pos cache
        Vector2 screenPos;

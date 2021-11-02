@@ -61,7 +61,7 @@ int main()
                  
         }
         
-        // check for collision
+        // check for collision with props
         for (auto prop:props) {
            bool coll = CheckCollisionRecs(knight.getCollisionRect(),prop.getCollisionRect(knight.getWorldPos()));
            if(coll) knight.undoMove();
@@ -73,7 +73,7 @@ int main()
        // now we can 'tick' the goblin now that the player has his final position
        goblin.tick(GetFrameTime());
 
-        // We need to check for collision with goblin.
+        
 
       
         Vector2 mapPos = Vector2Scale(worldPos,-1.f);
@@ -89,10 +89,17 @@ int main()
         for(auto prop : props){
            prop.Render(worldPos);
         }
-        
-
 
         EndDrawing();
+
+        // check for attack.  Not sure how IsMouseButtonPressed works, i presume it resets a flag after you call it.
+        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && 
+               CheckCollisionRecs(knight.getWeaponCollRect(),goblin.getCollisionRect())) {
+           // we got him! 
+           goblin.setAlive(false);
+
+
+        }
     }
     CloseWindow();
 }

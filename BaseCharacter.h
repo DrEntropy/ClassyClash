@@ -40,6 +40,9 @@ class BaseCharacter
 
         Rectangle getCollisionRect( );
 
+        inline bool getAlive() {return alive;}
+        void setAlive(bool isAlive) {alive = isAlive;}
+
 
     protected:
         Vector2 worldPos{0.f,0.f}; 
@@ -66,6 +69,8 @@ class BaseCharacter
         float updateTime{1.f/12.f};
 
         Vector2 velocity{};
-
+        
+    private:
+        bool alive{true};
 
 };

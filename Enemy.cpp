@@ -7,7 +7,7 @@ void Enemy::setTarget(Character* atarget){
 }
 
 void Enemy::tick(float deltaTime) {
-
+    
     // update worldpos, save previous
     worldPosLastFrame = worldPos;
    

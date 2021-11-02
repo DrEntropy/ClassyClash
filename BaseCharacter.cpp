@@ -20,6 +20,7 @@ Rectangle BaseCharacter::getCollisionRect( )  {
 }
 
 void BaseCharacter::tick(float deltaTime){
+      if(!alive) return; 
       // move
       if(Vector2Length(velocity)!=0.0)
         {
@@ -44,21 +45,21 @@ void BaseCharacter::tick(float deltaTime){
     
 }
 
-void BaseCharacter::Render(){
-                // draw the character
+void BaseCharacter::Render()
+{
+    // draw the character
 
-       
-        Rectangle source { frame*width,0.0f, 
-            rightLeft * width,
-            height
-            } ;
-    
+    if (alive)
+    {
+        Rectangle source{frame * width, 0.0f,
+                         rightLeft * width,
+                         height};
+
         Vector2 screenPos = getScreenPos();
-        Rectangle dest{ screenPos.x, dest.y = screenPos.y,
-            scale*width,
-            scale*height
-            };
+        Rectangle dest{screenPos.x, dest.y = screenPos.y,
+                       scale * width,
+                       scale * height};
 
-        DrawTexturePro(texture,source,dest,{0,0},0.0f,WHITE);
-
+        DrawTexturePro(texture, source, dest, {0, 0}, 0.0f, WHITE);
+    }
 }
